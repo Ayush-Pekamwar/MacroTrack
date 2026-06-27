@@ -4,10 +4,11 @@ import { Text, View } from "react-native";
 import MealItem from "./MealItem";
 
 type RecentMealProps = {
-    meals: Meal[];
+    meals: Meal[],
+    onDelete : () => void
 };
 
-export default function RecentMeals({ meals }: RecentMealProps) {
+export default function RecentMeals({ meals, onDelete }: RecentMealProps) {
     return (
         <View style={{ marginTop: 30 }}>
             <Text style={globalStyles.sectionTitle}>Recent Meals</Text>
@@ -19,11 +20,13 @@ export default function RecentMeals({ meals }: RecentMealProps) {
                     .map((meal) => (
                         <MealItem
                             key={meal.id}
+                            id = {meal.id}
                             name={meal.name}
                             calories={meal.calories}
                             protein={meal.protein}
                             carbs={meal.carbs}
                             fats={meal.fats}
+                            onDelete={onDelete}
                         />
                     ))
             )}
