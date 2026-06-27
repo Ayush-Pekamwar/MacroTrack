@@ -1,6 +1,8 @@
+import { addMeal } from "@/storage/meals";
 import { colors, globalStyles } from "@/styles/global";
+import { router } from "expo-router";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function AddMealScreen() {
     const [name, setName] = useState('');
@@ -10,8 +12,27 @@ export default function AddMealScreen() {
     const [fats, setFats] = useState('');
 
 
-    function handleAddMeal() {
-        console.log({ name, calories, protein, carbs, fats });
+    async function handleAddMeal() {
+        if (!name || !calories) {
+            Alert.alert('Error', 'Please enter a meal name and calories.');
+            return;
+        }
+        console.log("adding this meal to AsyncStorage: " + { name, calories, protein, carbs, fats });
+        const newMeal = {
+            name: name,
+            calories: Number(calories),
+            protein: Number(protein),
+            carbs: Number(carbs),
+            fats: Number(fats)
+        }
+
+        await addMeal(newMeal);
+        console.log("meal added successfully");
+        Alert.alert("Meal added Successfully");
+        
+        // resetting values back to empty after adding it to the storage
+        setName('') , setCalories(''), setProtein(''), setCarbs(''), setFats('');
+        router.replace('/');
     }
 
     return (
