@@ -1,10 +1,10 @@
-import { getMeals } from "@/storage/meals";
+import MealItem from "@/components/MealItem";
+import { clearMeals, getMeals, Meal } from "@/storage/meals";
 import { globalStyles } from "@/styles/global";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
-import { Meal } from "@/storage/meals";
-import MealItem from "@/components/MealItem";
+import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 
 export default function AllMealsScreen() {
@@ -16,6 +16,28 @@ export default function AllMealsScreen() {
         console.log("Loaded Meals : ", data);
     }
 
+    async function handleClearAll(): Promise<void> {
+        Alert.alert(
+
+            "Delete all meals?",
+
+            "This action cannot be undone.",
+
+            [
+                { text: "Cancel", style: "cancel" },
+
+                {
+                    text: "Delete", style: "destructive", onPress: async () => {
+                        await clearMeals();
+                        await loadMeals();
+                    }
+                },
+
+            ]
+        );
+
+    }
+
     useFocusEffect(
         useCallback(() => {
             loadMeals();
@@ -24,7 +46,18 @@ export default function AllMealsScreen() {
 
     return (
         <ScrollView style={globalStyles.container}>
-            <Text style={globalStyles.title}>All Meals</Text>
+            <View style={globalStyles.header}>
+                <Text style={globalStyles.title}>All Meals</Text>
+
+                {/* for deleting all meals added untill now */}
+                <TouchableOpacity onPress={handleClearAll}>
+                    <Ionicons
+                        name="trash-outline"
+                        size={22}
+                        color="#EF4444"
+                    />
+                </TouchableOpacity>
+            </View>
             <View style={{ marginTop: 30 }}>
                 {meals.length === 0 ? (
                     <Text style={globalStyles.empty}>No meals logged yet.</Text>
@@ -46,3 +79,11 @@ export default function AllMealsScreen() {
         </ScrollView>
     );
 }
+
+const styles = {
+    clearButton: {
+        color: 'red',
+        fontSize: 16,
+
+    },
+};

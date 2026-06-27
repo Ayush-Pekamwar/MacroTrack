@@ -34,7 +34,7 @@ export async function addMeal(
     return newMeal;
 }
 
-// clearing all meals from Async Storage (only for testing purposes)
+// clearing all meals from Async Storage 
 export async function clearMeals(): Promise<void> {
     await AsyncStorage.removeItem(MEALS_KEY);
 }
