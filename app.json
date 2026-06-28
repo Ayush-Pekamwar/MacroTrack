@@ -26,7 +26,7 @@
         {
           "backgroundColor": "#0C100E",
           "android": {
-            "image": "./images/macro-track-splash-icon.jpeg",
+            "image": "./images/macro-track-splash-icon.png",
             "imageWidth": 76
           }
         }
