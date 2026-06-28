@@ -17,13 +17,9 @@ MacroTrack helps you log meals, understand your daily nutrition, and stay aligne
 
 ## Preview
 
-| Daily dashboard | Add a meal |
-| :---: | :---: |
-| <img src="images/homescreen_preview.png" alt="MacroTrack home dashboard" width="320" height="auto" /> | <img src="images/add_meal_preview.png" alt="MacroTrack add meal screen" width="320" height="auto" /> |
-
-| Set goals | Meal history |
-| :---: | :---: |
-| <img src="images/set_goals_preview.png" alt="MacroTrack set goals screen" width="320" height="auto" /> | <img src="images/meal_history_preview.png" alt="MacroTrack meal history screen" width="320" height="auto" /> |
+| Daily dashboard | Add a meal | Set goals | Meal history |
+| :---: | :---: | :---: | :---: |
+| <img src="images/homescreen_preview.png" alt="MacroTrack home dashboard" width="220" height="auto" /> | <img src="images/add_meal_preview.png" alt="MacroTrack add meal screen" width="220" height="auto" /> | <img src="images/set_goals_preview.png" alt="MacroTrack set goals screen" width="220" height="auto" /> | <img src="images/meal_history_preview.png" alt="MacroTrack meal history screen" width="220" height="auto" /> |
 
 ## Features
 
