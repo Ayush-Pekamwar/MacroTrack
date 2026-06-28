@@ -1,9 +1,9 @@
 import { Meal } from '@/storage/meals';
+import { GoalValues } from '@/storage/goals';
 import { colors } from '@/styles/global';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, Text, View } from 'react-native';
 import MacroCard from './MacroCard';
-import { GoalValues } from './SetGoal';
 
 type MacroGridProps = {
     meals: Meal[];
