@@ -3,12 +3,14 @@ import { colors } from '@/styles/global';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, Text, View } from 'react-native';
 import MacroCard from './MacroCard';
+import { GoalValues } from './SetGoal';
 
-type MacroGridProps = { meals: Meal[] };
+type MacroGridProps = {
+    meals: Meal[];
+    goal: GoalValues;
+};
 
-const GOALS = { calories: 2000, protein: 150, carbs: 250, fats: 65 };
-
-export default function MacroGrid({ meals }: MacroGridProps) {
+export default function MacroGrid({ meals, goal }: MacroGridProps) {
     const today = new Date().toLocaleDateString('en-CA');
     const total = meals
         .filter((meal) => meal.date === today)
@@ -21,7 +23,7 @@ export default function MacroGrid({ meals }: MacroGridProps) {
             }),
             { calories: 0, protein: 0, carbs: 0, fats: 0 }
         );
-    const calorieProgress = Math.min(total.calories / GOALS.calories, 1);
+    const calorieProgress = Math.min(total.calories / goal.calories, 1);
 
     return (
         <View>
@@ -31,7 +33,7 @@ export default function MacroGrid({ meals }: MacroGridProps) {
                         <Text style={styles.heroLabel}>Calories today</Text>
                         <View style={styles.calorieRow}>
                             <Text style={styles.calorieValue}>{total.calories.toLocaleString()}</Text>
-                            <Text style={styles.calorieGoal}> / {GOALS.calories.toLocaleString()} kcal</Text>
+                            <Text style={styles.calorieGoal}> / {goal.calories.toLocaleString()} kcal</Text>
                         </View>
                     </View>
                     <View style={styles.flameBadge}>
@@ -42,14 +44,14 @@ export default function MacroGrid({ meals }: MacroGridProps) {
                     <View style={[styles.heroFill, { width: `${calorieProgress * 100}%` }]} />
                 </View>
                 <Text style={styles.remaining}>
-                    {Math.max(GOALS.calories - total.calories, 0).toLocaleString()} kcal remaining
+                    {Math.max(goal.calories - total.calories, 0).toLocaleString()} kcal remaining
                 </Text>
             </View>
 
             <View style={styles.grid}>
-                <MacroCard label="Protein" value={total.protein} goal={GOALS.protein} color={colors.protein} />
-                <MacroCard label="Carbs" value={total.carbs} goal={GOALS.carbs} color={colors.carbs} />
-                <MacroCard label="Fats" value={total.fats} goal={GOALS.fats} color={colors.fats} />
+                <MacroCard label="Protein" value={total.protein} goal={goal.protein} color={colors.protein} />
+                <MacroCard label="Carbs" value={total.carbs} goal={goal.carbs} color={colors.carbs} />
+                <MacroCard label="Fats" value={total.fats} goal={goal.fats} color={colors.fats} />
             </View>
         </View>
     );
