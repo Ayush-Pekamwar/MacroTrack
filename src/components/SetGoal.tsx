@@ -1,3 +1,4 @@
+import { GoalValues } from '@/storage/goals';
 import { colors } from '@/styles/global';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
@@ -13,12 +14,6 @@ import {
     View,
 } from 'react-native';
 
-export type GoalValues = {
-    calories: number;
-    protein: number;
-    carbs: number;
-    fats: number;
-};
 
 type SetGoalProps = {
     goal: GoalValues;
