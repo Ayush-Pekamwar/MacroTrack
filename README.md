@@ -17,17 +17,13 @@ MacroTrack helps you log meals, understand your daily nutrition, and stay aligne
 
 ## Preview
 
-<!-- Replace each placeholder below with an image, for example:
-![MacroTrack home dashboard](images/home-dashboard.png)
--->
-
-| Daily dashboard | Add a meal | Set goals |
-| :---: | :---: | :---: |
-| _Screenshot placeholder_ | _Screenshot placeholder_ | _Screenshot placeholder_ |
-
-| Meal history | Empty state |
+| Daily dashboard | Add a meal |
 | :---: | :---: |
-| _Screenshot placeholder_ | _Screenshot placeholder_ |
+| ![MacroTrack home dashboard](images/homescreen_preview.png) | ![MacroTrack add meal screen](images/add_meal_preview.png) |
+
+| Set goals | Meal history |
+| :---: | :---: |
+| ![MacroTrack set goals screen](images/set_goals_preview.png) | ![MacroTrack meal history screen](images/meal_history_preview.png) |
 
 ## Features
 
@@ -45,7 +41,6 @@ MacroTrack helps you log meals, understand your daily nutrition, and stay aligne
 - Prevent invalid or zero-value goals with built-in validation.
 - See the dashboard update immediately after saving.
 
-> Goal values currently live in app state and reset to the defaults when the app process restarts. Persistent goals are planned.
 
 ### Fast meal logging
 
@@ -100,7 +95,7 @@ MacroTrack uses a dark, nutrition-focused visual system with:
 ### Installation
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Ayush-Pekamwar/MacroTrack
 cd macro-track
 npm install
 ```
@@ -155,18 +150,6 @@ macro-track/
 | `npm run web` | Start the web version |
 | `npm run lint` | Run Expo linting after ESLint is configured |
 
-## Roadmap
-
-- Persist custom macro goals across app restarts.
-- Edit existing meal entries.
-- Group meal history by date.
-- Add weekly nutrition trends and charts.
-- Add configurable meal categories and timestamps.
-- Expand accessibility and automated test coverage.
-
-## Contributing
-
-Issues and pull requests are welcome. For larger changes, open an issue first so the direction can be discussed before implementation.
 
 ## License
 
