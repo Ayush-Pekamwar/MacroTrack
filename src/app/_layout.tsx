@@ -1,9 +1,14 @@
 import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { colors } from "@/styles/global";
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }} >
-      <Stack.Screen name='(tabs)' />
-    </Stack>
+    <>
+      <StatusBar style="light" />
+      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+    </>
   );
 }

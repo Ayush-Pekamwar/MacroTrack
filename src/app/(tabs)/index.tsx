@@ -1,48 +1,29 @@
-import HomeHeader from "@/components/HomeHeader";
-import MacroGrid from "@/components/MacroGrid";
-import RecentMeals from "@/components/RecentMeals";
-import { getMeals, Meal } from "@/storage/meals";
-import { globalStyles } from "@/styles/global";
-import { useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import HomeHeader from '@/components/HomeHeader';
+import MacroGrid from '@/components/MacroGrid';
+import RecentMeals from '@/components/RecentMeals';
+import { getMeals, Meal } from '@/storage/meals';
+import { globalStyles } from '@/styles/global';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react';
+import { ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
+export default function HomeScreen() {
+    const [meals, setMeals] = useState<Meal[]>([]);
 
-export default function Homescreen() {
-  const [meals, setMeals] = useState<Meal[]>([]);
+    const loadMeals = useCallback(async () => {
+        setMeals(await getMeals());
+    }, []);
 
-  async function loadMeals() {
-    const data = await getMeals();
-    setMeals(data);
-    console.log("Loaded Meals : ", data);
-  }
+    useFocusEffect(useCallback(() => { loadMeals(); }, [loadMeals]));
 
-  useFocusEffect(
-    useCallback(() => {
-      loadMeals();
-    }, [])
-  );
-
-
-  return (
-    <ScrollView style={globalStyles.container}>
-
-      <Text style={globalStyles.title}>MacroTrack</Text>
-      <HomeHeader />
-      <MacroGrid meals={meals} />
-      <RecentMeals meals={meals} onDelete={loadMeals} />
-
-    </ScrollView>
-  );
+    return (
+        <SafeAreaView style={globalStyles.container} edges={['top']}>
+            <ScrollView contentContainerStyle={globalStyles.content} showsVerticalScrollIndicator={false}>
+                <HomeHeader />
+                <MacroGrid meals={meals} />
+                <RecentMeals meals={meals} onDelete={loadMeals} />
+            </ScrollView>
+        </SafeAreaView>
+    );
 }
-
-
-const styles = StyleSheet.create({
-  date: {
-    fontSize: 14,
-    color: '#a0a0b0',
-    marginTop: 4,
-    marginBottom: 30,
-  },
-});
-
