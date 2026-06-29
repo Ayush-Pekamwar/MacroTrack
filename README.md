@@ -14,7 +14,7 @@
 MacroTrack helps you log meals, understand your daily nutrition, and stay aligned with personalized calorie and macronutrient targets. It uses a calm dark interface, clear progress indicators, and local-first storage—no account or internet connection required.
 
 Live Links:
-[For Android](https://expo.dev/accounts/ayushpekamwars-team/projects/macro-track/builds/beacebd9-b543-4946-893c-90f5b243ff68)
+[For Android](https://drive.google.com/file/d/1vozERXJD1LXXP3fEcIOVjrLVjBrPH-4-/view?usp=sharing)
 
 > MacroTrack is under active development. The current version focuses on fast, frictionless daily tracking.
 
